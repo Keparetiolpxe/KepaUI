@@ -1,0 +1,91 @@
+--[[
+
+Made by Kepa
+Kepa UI
+
+--Getting Library
+local Lib,helping = loadstring(game:HttpGet("https://raw.githubusercontent.com/Keparetiolpxe/KepaUI/main/Source"))()
+--Creating KeySystem
+Library:KeySys("Key","link.com/...",function()
+	--Creating window, can be done without KeySystem
+	local window = Library:window("Title",1.0)--Title,Version
+	--Creating Tab
+	local Tab1 = window:tab("Tab")--Name
+	--Creating Button
+	local Button = Tab1:button("Name","Description",function()--Name,Description,Function on Click
+		print("Clicked")
+	end)
+	--[[
+		Ways to change Button properties
+		
+		Button:ChangeName("Changed Button") --Changes button name
+		Button:ChangeDescription("Changed Description") --Changes button description
+		Button:ChangeCallback(function() --Changes callback - function on click
+			print("Changed Callback") 
+		end)
+		Button:Break() --Removes button from window
+	]]
+	
+	
+	--Creating Toggle
+	local Toggle = Tab1:toggle("Toggle","Description",false,function(bool)--Name,Description,CurrentValue,Callback(Status) - Function on click with returned status
+		print(bool)
+	end)
+	--[[
+		Ways to change Toggle properties
+		
+		Toggle:ChangeName("Changed Toggle") --Changes toggle name
+		Toggle:ChangeDescription("Changed Description") --Changes toggle description
+		Toggle:ChangeValue(true)--Sets status of Toggle activated and calls callback
+		Toggle:ChangeCallback(function(bool) --Changes callback - function on click with returned status
+			print(bool)
+		end)
+		Toggle:Break() --Removes toggle from window
+	]]
+	
+	
+	--Creating Slider
+	local Slider = Tab1:slider("Slider","Description",0,100,1,0.1,function(value)--Name,Description,minValue,maxValue,CurrentValue,Increment,callback(Value) - Function on changed slider with returned value
+		print(value)
+	end)
+	--[[
+		Ways to change Slider properties
+		
+		Slider:ChangeName("Changed Slider") --Changes slider name
+		Slider:ChangeDescription("Changed Description") --Changes slider description
+		Toggle:ChangeInterval(1,200) --Changes min and max value
+		Toggle:ChangeValue(150) --Sets current value of slider and calls callback
+		Toggle:ChangeIncrement(0.1) -- Changes Increment of slider
+		Toggle:ChangeCallback(function(value) --Changes callback - function on click with returned status
+			print(value.." from changed slider")
+		end)
+		Toggle:Break() -- Removes slider from window
+	]]
+	
+	
+	--Creating Dropdown
+	local Dropdown = Tab1:dropdown("Dropdown","Description",{"option1","option2"},"option1",function(value)--Name,Description,OptionsTable(only strings - "..."),CurrentOption,callback(Option) - Function on changed dropdown with returned option
+		print(value)
+	end)
+	Dropdown:
+	--[[
+		Ways to change Dropdown properties
+		
+		Dropdown:ChangeName("Changed Dropdown") --Changes dropdown name
+		Dropdown:ChangeDescription("Changed Description") --Changes dropdown description
+		Dropdown:Select("option1")--Selects Option, could be any string but recommend to use from current options to not confuse the user
+		Dropdown:ChangeList({"option1new","option2new"}) --Clears last list and adds new one. Can also be used for clearing options by clearing the table - {}
+		Dropdown:AddList({"option3","option4"}) --Adds more options to last list without clearing it
+		Dropdown:ChangeCallback(function(value) --Changes callback - function on click with returned status
+			print(value.." from changed dropdown")
+		end)
+		Dropdown:Break() --Removes dropdown from window
+	]]
+end)
+
+
+
+Documentation is not ended and in developing, will be finished 29.06.2023. Also I'll make this UI useable for everyone at this day I think. It is not useable for others because you can't change Discord link currently.
+
+
+]]
