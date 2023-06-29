@@ -4,7 +4,7 @@ Made by Kepa
 Kepa UI
 
 --Getting Library
-local Lib,helping = loadstring(game:HttpGet("https://raw.githubusercontent.com/Keparetiolpxe/KepaUI/main/Source"))()
+local Library,helping = loadstring(game:HttpGet("https://raw.githubusercontent.com/Keparetiolpxe/KepaUI/main/Source"))()
 --Creating KeySystem
 Library:KeySys("Key","link.com/...",function()
 	--Creating window, can be done without KeySystem
