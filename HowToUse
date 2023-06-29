@@ -8,7 +8,7 @@ local Lib,helping = loadstring(game:HttpGet("https://raw.githubusercontent.com/K
 --Creating KeySystem
 Library:KeySys("Key","link.com/...",function()
 	--Creating window, can be done without KeySystem
-	local window = Library:window("Title",1.0)--Title,Version
+	local window = Library:window("Title",1.0)--Title,Version - any number, will look like - v1, v2, v3 etc.
 	--Creating Tab
 	local Tab1 = window:tab("Tab")--Name
 	--Creating Button
