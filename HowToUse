@@ -19,10 +19,11 @@ Library:KeySys("Key","link.com/...",function()
 		Ways to change Button properties
 		
 		Button:ChangeName("Changed Button") --Changes button name
-		Button:ChangeDescription("Changed Description") --Changes button description
+		Button:ChangeDescription("Changed Description") --Changes button Description/Info
 		Button:ChangeCallback(function() --Changes callback - function on click
 			print("Changed Callback") 
 		end)
+		Button:Fire() --Fires click function
 		Button:Break() --Removes button from window
 	]]
 	
@@ -35,7 +36,7 @@ Library:KeySys("Key","link.com/...",function()
 		Ways to change Toggle properties
 		
 		Toggle:ChangeName("Changed Toggle") --Changes toggle name
-		Toggle:ChangeDescription("Changed Description") --Changes toggle description
+		Toggle:ChangeDescription("Changed Description") --Changes toggle Description/Info
 		Toggle:ChangeValue(true)--Sets status of Toggle activated and calls callback
 		Toggle:ChangeCallback(function(bool) --Changes callback - function on click with returned status
 			print(bool)
@@ -52,7 +53,7 @@ Library:KeySys("Key","link.com/...",function()
 		Ways to change Slider properties
 		
 		Slider:ChangeName("Changed Slider") --Changes slider name
-		Slider:ChangeDescription("Changed Description") --Changes slider description
+		Slider:ChangeDescription("Changed Description") --Changes slider Description/Info
 		Toggle:ChangeInterval(1,200) --Changes min and max value
 		Toggle:ChangeValue(150) --Sets current value of slider and calls callback
 		Toggle:ChangeIncrement(0.1) -- Changes Increment of slider
@@ -67,12 +68,11 @@ Library:KeySys("Key","link.com/...",function()
 	local Dropdown = Tab1:dropdown("Dropdown","Description",{"option1","option2"},"option1",function(value)--Name,Description,OptionsTable(only strings - "..."),CurrentOption,callback(Option) - Function on changed dropdown with returned option
 		print(value)
 	end)
-	Dropdown:
 	--[[
 		Ways to change Dropdown properties
 		
 		Dropdown:ChangeName("Changed Dropdown") --Changes dropdown name
-		Dropdown:ChangeDescription("Changed Description") --Changes dropdown description
+		Dropdown:ChangeDescription("Changed Description") --Changes dropdown Description/Info
 		Dropdown:Select("option1")--Selects Option, could be any string but recommend to use from current options to not confuse the user
 		Dropdown:ChangeList({"option1new","option2new"}) --Clears last list and adds new one. Can also be used for clearing options by clearing the table - {}
 		Dropdown:AddList({"option3","option4"}) --Adds more options to last list without clearing it
@@ -81,6 +81,61 @@ Library:KeySys("Key","link.com/...",function()
 		end)
 		Dropdown:Break() --Removes dropdown from window
 	]]
+	--Creating Label
+	local Label = Tab1:label("Label","Description")--Name,Description
+	--[[
+		Ways to change Label properties
+		Label:ChangeName("Changed Label") --Changes Label Name
+		Label:ChangeDescription("Changed Description") --Changes Description/Info
+		Label:Break() --Removes Label from window
+	]]
+	
+	
+	--Creating Box
+	local Box = Tab1:box("Box","Description","currentvalue",function(text)--Name,Description,CurrentValue,Callback(inputedText)
+		print(text)
+	end)
+	--[[
+		Ways to change Box properties
+		Box:ChangeName("Changed Box") --Changes Box Name
+		Box:ChangeDescription("Changed Description") --Changes Box Description/Info
+		Box:ChangeValue("Change") --Changes Box text and doing callback
+		Box:Break() --Removes Box from window
+	]]
+	
+	
+	--Creating Keybind
+	local Keybind = Tab1:keybind("Keybind","Description",Enum.KeyCode.B,function(key,stringkey)--Name,Description,StarterKeybind,Callback(key(Enum),stringified(string) - example: Converts Enum.KeyCode.RightShift into "RightShift" as string)
+		print(stringkey.." was pressed")
+	end)
+	--[[
+		Ways to change Keybind properties
+		Keybind:ChangeName("Changed Keybind") --Changes Name of Keybind
+		Keybind:ChangeDescription("Changed Description") --Changes Keybind Description/Info
+		Keybind:ChangeBind(Enum.KeyCode.LeftBracket") --Changes Keybind of Keybind
+		Keybind:ChangeCallback(function(k,sk)
+			print(sk.." was pressed and callback changed")
+		end)
+	]]
+	
+	
+	--Creating UIBreaker
+	local UIBreaker = Tab1:uibreaker()--No Info can be provided
+	--[[
+		Ways to change UIBreaker properties
+		UIBreaker:Fire() --Closes UI
+		UIBreaker:Break() --Removes UIBreaker from window
+	]]
+	
+	
+	
+	
+	
+	
+	--//Other\\--
+	Library:notification("Title","Title-Description",5,function() --Title, Title Description, Self-destruct time(seconds), callback on clicking "Ok", if you don't provide callback then it does nothing on "Ok"
+		print("User agreed")
+	end)
 end)
 
 
