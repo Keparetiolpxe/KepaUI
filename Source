@@ -1,4 +1,7 @@
---Setting variables
+--[[
+	KepaUI, Kepa's source
+	Made by Kepa
+]]
 local Library = {}
 local help = {}
 local plr = game:GetService("Players").LocalPlayer
