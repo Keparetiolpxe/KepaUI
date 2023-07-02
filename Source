@@ -197,6 +197,7 @@ function Library:KeySys(key,keylink,callback)
 		KeyLink.TextColor3 = Color3.fromRGB(0, 0, 0)
 		KeyLink.TextSize = 14.000
 		KeyLink.TextWrapped = true
+		KeyLink.ClearTextOnFocus = false
 		CopyLink.Name = guid()
 		CopyLink.Parent = MainFrame
 		CopyLink.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -228,6 +229,7 @@ function Library:KeySys(key,keylink,callback)
 		DiscordLink.TextScaled = true
 		DiscordLink.TextSize = 14.000
 		DiscordLink.TextWrapped = true
+		DiscordLink.ClearTextOnFocus = false
 		CopyDiscord.Name = guid()
 		CopyDiscord.Parent = MainFrame
 		CopyDiscord.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
