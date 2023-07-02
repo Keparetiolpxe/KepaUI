@@ -5,11 +5,24 @@
 local Library = {}
 local help = {}
 local plr = game:GetService("Players").LocalPlayer
+
 function help:cnnil()
-	if plr.Character and plr.Character:FindFirstChild("Head") or plr.Character:FindFirstChild("HumanoidRootPart") then
+	if plr.Character and plr.Character:FindFirstChild("Head") or plr.Character:FindFirstChild("HumanoidRootPart") or plr.Character.PrimaryPart ~= nil then
 		return true
 	else
 		return false
+	end
+end
+function help:tpto(x,y,z,back,time)
+	if help:cnnil() then
+		back = back or false
+		time = time or 0
+		lp = plr.Character.HumanoidRootPart.CFrame
+		plr.Character.HumanoidRootPart.CFrame = CFrame.new(x,y,z,1,0,0,0,1,0,0,0,1)
+		if back == true then
+			task.wait(time)
+			plr.Character.HumanoidRootPart.CFrame = lp
+		end
 	end
 end
 function help:touch(part,from,time)
