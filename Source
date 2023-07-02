@@ -209,6 +209,9 @@ function Library:KeySys(key,keylink,callback)
 		CopyLink.Text = "Copy"
 		CopyLink.TextColor3 = Color3.fromRGB(0, 0, 0)
 		CopyLink.TextSize = 14.000
+		CopyLink.MouseButton1Click:Connect(function()
+			setclipboard(keylink)
+		end)
 		DiscordLink.Name = guid()
 		DiscordLink.Parent = MainFrame
 		DiscordLink.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -237,6 +240,9 @@ function Library:KeySys(key,keylink,callback)
 		CopyDiscord.Text = "Copy"
 		CopyDiscord.TextColor3 = Color3.fromRGB(0, 0, 0)
 		CopyDiscord.TextSize = 14.000
+CopyDiscord.MouseButton1Click:Connect(function()
+	setclipboard("https://discord.gg/Mb7xc9nEsB")
+end)
 end
 local function tweento(x,xx,y,yy,frame,time,destroyaftertween)
 	game:GetService("TweenService"):Create(frame,TweenInfo.new(time),{Size = UDim2.new(x,xx,y,yy)}):Play()
