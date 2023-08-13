@@ -446,7 +446,7 @@ function Library:KeySystem(infotable,callback)
 	end)
 	ShowButton.MouseButton1Click:Connect(function()
 		mainframa.Visible = false
-		Show.Visisble = true
+		Show.Visible = true
 	end)
 	Show.MouseButton1Click:Connect(function()
 		mainframa.Visible = true
@@ -582,11 +582,11 @@ function Library:window(title,discord,version)
 			disconnection = false
 			local disconnect = game:GetService("UserInputService").InputBegan:Connect(function(i)
 				if i.KeyCode == Enum.KeyCode.Unknown then return end
-				BindLabel.Text = tostring(i.KeyCode)
-				showbind = "["..i.KeyCode.."]"
+				BindLabel.Text = tostring("["..i.KeyCode.."]")
+				showbind = i.KeyCode
 				disconnection = true
 			end)
-			repeat task.wait() until disconnection
+			repeat task.wait() print(disconnection) until disconnection == true
 			disconnect:Disconnect()
 		end
 	end)
@@ -1557,6 +1557,12 @@ function Library:window(title,discord,version)
 					tweento(0,0,0,0,MainFrame,0.2,true)
 					for i,v in pairs(DisconnectButtons) do
 						v:Break()
+						if v.ChangeCallback then
+							v:ChangeCallback(function() end)
+						end
+						if v.ChangeValue then
+							v:ChangeValue(false)
+						end
 					end
 				end
 			end)
@@ -2018,21 +2024,4 @@ function Library:window(title,discord,version)
 	end
 	return window
 end
-Library:KeySystem({
-	["Kepa"] = true,
-	["Key"] = "aguga",
-	["SystemDescription"] = "descccc",
-	["SystemTitle"] = "titleeeee testy"
-},function()
-local window = Library:window("titleee","dwdwdw",1.1)
-window:button("work","wrok",function()
-	print("aguaj")
-end)
-window:toggle("toglee","worok",function(b)
-	pcall(function()
-	while wait(1) do
-		print(b)
-	end
-	end)
-end)
-end)
+return Library,help
