@@ -24,32 +24,43 @@ function help:cnnil()
 	end
 end
 function help:draggable(frame)
-	local dragging = false
-	local dragInput, mousePos, framePos
-	frame.InputBegan:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseButton1 then
-			dragging = true
-			mousePos = input.Position
-			framePos = frame.Position
-			input.Changed:Connect(function()
-				if input.UserInputState == Enum.UserInputState.End then
-					dragging = false
+	local function XESUAF_script()
+		local script = Instance.new('LocalScript', frame)
+		script.Name = guid()
+		local input = game:GetService("UserInputService")
+		local TS = game:GetService("TweenService")
+		local function EnabledDrag(frame)
+			frame = frame or script.Parent
+			local dragging = false
+			local dragInput, mousePos, framePos
+			frame.InputBegan:Connect(function(input)
+				if input.UserInputType == Enum.UserInputType.MouseButton1 then
+					dragging = true
+					mousePos = input.Position
+					framePos = frame.Position
+					input.Changed:Connect(function()
+						if input.UserInputState == Enum.UserInputState.End then
+							dragging = false
+						end
+					end)
+				end
+			end)
+			frame.InputChanged:Connect(function(input)
+				if input.UserInputType == Enum.UserInputType.MouseMovement then
+					dragInput = input
+				end
+			end)
+			input.InputChanged:Connect(function(input)
+				if input == dragInput and dragging then
+					local delta = input.Position - mousePos
+					local destination = UDim2.new(framePos.X.Scale, framePos.X.Offset + delta.X, framePos.Y.Scale, framePos.Y.Offset + delta.Y)
+					TS:Create(frame,TweenInfo.new(0.1),{Position = destination}):Play()
 				end
 			end)
 		end
-	end)
-	frame.InputChanged:Connect(function(input)
-		if input.UserInputType == Enum.UserInputType.MouseMovement then
-			dragInput = input
-		end
-	end)
-	dragInput.InputChanged:Connect(function(input)
-		if input == dragInput and dragging then
-			local delta = input.Position - mousePos
-			local destination = UDim2.new(framePos.X.Scale, framePos.X.Offset + delta.X, framePos.Y.Scale, framePos.Y.Offset + delta.Y)
-			TS:Create(frame,TweenInfo.new(0.1),{Position = destination}):Play()
-		end
-	end)
+		EnabledDrag(frame)
+	end
+	coroutine.wrap(XESUAF_script)()
 end
 function help:tpto(x,y,z,back,time)
 	if help:cnnil() then
