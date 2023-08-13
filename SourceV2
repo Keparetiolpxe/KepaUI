@@ -1,5 +1,5 @@
 --[[
-	KepaUI, Kepa's source V2.0 ----TESTING----
+	KepaUI, Kepa's source V2.0
 	Made by Kepa
 ]]
 local DisconnectButtons = {}
