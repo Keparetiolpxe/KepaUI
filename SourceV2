@@ -339,7 +339,7 @@ function Library:KeySystem(infotable,callback)
 		DiscordBox.Font = Enum.Font.SourceSans
 		DiscordBox.PlaceholderColor3 = Color3.fromRGB(58, 58, 58)
 		DiscordBox.PlaceholderText = "Discrod"
-		DiscordBox.Text = "discord/wwoci"
+		DiscordBox.Text = infotable.DiscordLink
 		DiscordBox.TextColor3 = Color3.fromRGB(0, 0, 0)
 		DiscordBox.TextScaled = true
 		DiscordBox.TextWrapped = true
