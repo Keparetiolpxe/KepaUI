@@ -43,7 +43,7 @@ function help:draggable(frame)
 			dragInput = input
 		end
 	end)
-	input.InputChanged:Connect(function(input)
+	dragInput.InputChanged:Connect(function(input)
 		if input == dragInput and dragging then
 			local delta = input.Position - mousePos
 			local destination = UDim2.new(framePos.X.Scale, framePos.X.Offset + delta.X, framePos.Y.Scale, framePos.Y.Offset + delta.Y)
