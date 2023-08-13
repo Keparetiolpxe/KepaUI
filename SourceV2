@@ -579,12 +579,15 @@ function Library:window(title,discord,version)
 	BindLabel.InputBegan:Connect(function(i)
 		if i.UserInputType == Enum.UserInputType.MouseButton1 then
 			BindLabel.TextColor3 = Color3.fromRGB(70,70,70)
+			disconnection = false
 			local disconnect = game:GetService("UserInputService").InputBegan:Connect(function(i)
 				if i.KeyCode == Enum.KeyCode.Unknown then return end
 				BindLabel.Text = tostring(i.KeyCode)
-				showbind = i.KeyCode
-				disconnect:Disconnect()
+				showbind = "["..i.KeyCode.."]"
+				disconnection = true
 			end)
+			repeat task.wait() until disconnection
+			disconnect:Disconnect()
 		end
 	end)
 	NameLabel.Name = guid()
@@ -2015,4 +2018,21 @@ function Library:window(title,discord,version)
 	end
 	return window
 end
-return Library,help
+Library:KeySystem({
+	["Kepa"] = true,
+	["Key"] = "aguga",
+	["SystemDescription"] = "descccc",
+	["SystemTitle"] = "titleeeee testy"
+},function()
+local window = Library:window("titleee","dwdwdw",1.1)
+window:button("work","wrok",function()
+	print("aguaj")
+end)
+window:toggle("toglee","worok",function(b)
+	pcall(function()
+	while wait(1) do
+		print(b)
+	end
+	end)
+end)
+end)
