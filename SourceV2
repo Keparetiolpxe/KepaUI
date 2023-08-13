@@ -194,7 +194,7 @@ function Library:KeySystem(infotable,callback)
 		infotable.DiscordTitle = "BUG Reports"
 	end
 	--InfoTable
-	
+
 	local KSYS = Instance.new("ScreenGui")
 	local mainframa = Instance.new("Frame")
 	local title = Instance.new("TextLabel")
@@ -214,11 +214,11 @@ function Library:KeySystem(infotable,callback)
 	local Show = Instance.new("TextButton")
 	local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
 	local UICorner = Instance.new("UICorner")
-	
+
 	KSYS.Name = guid()
 	KSYS.Parent = safepath
 	KSYS.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-	
+
 	Show.Name = guid()
 	Show.Parent = KSYS
 	Show.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
@@ -234,7 +234,7 @@ function Library:KeySystem(infotable,callback)
 	UIAspectRatioConstraint.Parent = Show
 	UICorner.CornerRadius = UDim.new(0.1, 0)
 	UICorner.Parent = Show
-	
+
 	mainframa.Name = guid()
 	mainframa.Parent = KSYS
 	mainframa.BackgroundColor3 = Color3.fromRGB(104, 104, 104)
@@ -1011,6 +1011,7 @@ function Library:window(title,discord,version)
 				connection4:Disconnect()
 				Button:Destroy()
 			end
+			table.insert(DisconnectButtons,BTF)
 			return BTF
 		end
 		function tab:toggle(name,desc,currentval,callback)
@@ -1135,6 +1136,7 @@ function Library:window(title,discord,version)
 				connection2:Disconnect()
 				Toggle:Destroy()
 			end
+			table.insert(DisconnectButtons,TGF)
 			return TGF
 		end
 		function tab:label(text,desc)
@@ -1200,6 +1202,7 @@ function Library:window(title,discord,version)
 				connection1:Disconnect()
 				Label:Destroy()
 			end
+			table.insert(DisconnectButtons,LBF)
 			return LBF
 		end
 		function tab:dropdown(name,desc,options,currentoption,callback)
@@ -1462,6 +1465,7 @@ function Library:window(title,discord,version)
 				connection2:Disconnect()
 				Dropdown:Destroy()
 			end
+			table.insert(DisconnectButtons,DDF)
 			return DDF
 		end
 		function tab:uibreaker()
@@ -1548,6 +1552,9 @@ function Library:window(title,discord,version)
 			connection1 = DestroyUI.InputBegan:Connect(function(i)
 				if i.UserInputType == Enum.UserInputType.MouseButton1 then
 					tweento(0,0,0,0,MainFrame,0.2,true)
+					for i,v in pairs(DisconnectButtons) do
+						v:Break()
+					end
 				end
 			end)
 			UBF = {}
@@ -1557,6 +1564,7 @@ function Library:window(title,discord,version)
 			function UBF:Fire()
 				tweento(0,0,0,0,MainFrame,0.2,true)
 			end
+			table.insert(DisconnectButtons,UBF)
 			return UBF
 		end
 		function tab:box(name,desc,cv,callback)
@@ -1672,6 +1680,7 @@ function Library:window(title,discord,version)
 				connection2:Disconnect()
 				TextBox:Destroy()
 			end
+			table.insert(DisconnectButtons,BXF)
 			return BXF
 		end
 		function tab:slider(name,desc,min,max,cv,increment,callback)
@@ -1873,6 +1882,7 @@ function Library:window(title,discord,version)
 				connection1:Disconnect()
 				Slider:Destroy()
 			end
+			table.insert(DisconnectButtons,SDF)
 			return SDF
 		end
 		function tab:keybind(name,desc,cb,callback)
@@ -1998,6 +2008,7 @@ function Library:window(title,discord,version)
 				connection3:Disconnect()
 				Keybind:Destroy()
 			end
+			table.insert(DisconnectButtons,KBF)
 			return KBF
 		end
 		return tab
